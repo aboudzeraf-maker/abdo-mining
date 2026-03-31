@@ -1,12 +1,12 @@
-require('@nomiclabs/hardhat-waffle');
+require("@nomiclabs/hardhat-ethers");
+require("dotenv").config();
 
 module.exports = {
-  solidity: "0.8.0",
+  solidity: "0.8.10",
   networks: {
-    hardhat: {
-      forking: {
-        url: 'https://eth-mainnet.g.alchemy.com/v2/EcvvdH1-dDqcJF3WUV0CK',
-      },
-    },
-  },
+    mainnet: {
+      url: `https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+      accounts: [`0x${process.env.PRIVATE_KEY.replace('0x', '')}`]
+    }
+  }
 };
